@@ -64,7 +64,7 @@ if [ ! -f .env ]; then
     fi
 fi
 
-echo "Opening .env for editing. Please follow the instructions below to configure your environment."
+echo "Edit the .env. Please follow the instructions below to configure your environment."
 
 echo ""
 echo "Instructions:"
@@ -85,14 +85,14 @@ echo ""
 echo "4. Save and exit the editor when you are done editing."
 echo ""
 
-read -p "Press Enter to open the .env file in nano..."
-nano .env
+
 
 # Step 5: Final instructions for starting n8n
 echo ""
 echo "Configuration complete!"
 echo ""
-echo "You are now in the project directory: $(pwd)"
+echo "Run the following comand: cd $(pwd)"
+echo ""
 echo "You can now start n8n with the following command:"
 echo "    docker compose up -d"
 echo ""
