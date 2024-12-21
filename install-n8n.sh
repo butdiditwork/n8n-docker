@@ -39,6 +39,7 @@ else
     git clone "$REPO_URL" "$INSTALL_DIR"
 fi
 
+# Always ensure we are in the working directory
 cd "$INSTALL_DIR"
 
 # Step 3: Create necessary directories and set permissions
@@ -91,6 +92,7 @@ nano .env
 echo ""
 echo "Configuration complete!"
 echo ""
+echo "You are now in the project directory: $(pwd)"
 echo "You can now start n8n with the following command:"
 echo "    docker compose up -d"
 echo ""
