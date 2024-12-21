@@ -1,0 +1,14 @@
+# Ignore .env file
+.env
+
+# Ignore n8n data directory
+n8n_data/
+
+# Ignore PostgreSQL data directory
+pgdata/
+
+# Ignore other common files and directories
+*.log
+*.tmp
+*.bak
+.DS_Store

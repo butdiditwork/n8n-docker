@@ -1,0 +1,35 @@
+services:
+  n8n:
+    image: n8nio/n8n
+    ports:
+      - "${N8N_PORT}:5678"
+    environment:
+      - N8N_BASIC_AUTH_ACTIVE=${N8N_BASIC_AUTH_ACTIVE}
+      - N8N_BASIC_AUTH_USER=${N8N_BASIC_AUTH_USER}
+      - N8N_BASIC_AUTH_PASSWORD=${N8N_BASIC_AUTH_PASSWORD}
+      - N8N_HOST=${N8N_HOST}
+      - N8N_PORT=${N8N_PORT}
+      - WEBHOOK_URL=${WEBHOOK_URL}
+      - N8N_DIAGNOSTICS_ENABLED=${N8N_DIAGNOSTICS_ENABLED}
+      - N8N_SECURE_COOKIE=${N8N_SECURE_COOKIE}
+    depends_on:
+      - postgres
+      - qdrant
+    volumes:
+      - ./n8n_data:/home/node/.n8n
+
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+
+  qdrant:
+    image: qdrant/qdrant
+    ports:
+      - "${QDRANT_PORT}:6333"
+    environment:
+      QDRANT__SERVICE__GRPC_PORT: ${QDRANT_GRPC_PORT}
